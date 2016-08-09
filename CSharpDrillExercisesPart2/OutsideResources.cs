@@ -17,13 +17,24 @@ namespace CSharpDrillExercisesPart2
             return;
         }
 
+        internal int internalExample = 40;
 
+
+    }
+}
+
+
+namespace PublicResources
+{
+    public class ExternalResources
+    {
         public string publicExample()
         {
             string rtrnText = "This is an example string that is returned from a public resource.";
             return rtrnText;
         }
 
-
+        internal int internalExample = 7;
+        private int privateExample = 12;
     }
 }

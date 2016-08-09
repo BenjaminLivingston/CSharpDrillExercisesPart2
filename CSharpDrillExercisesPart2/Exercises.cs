@@ -13,8 +13,9 @@ namespace CSharpDrillExercisesPart2
 
         static void Main(string[] args)
         {
-
+            Exercises ex = new Exercises();
             OutsideResources outRsrc = new OutsideResources();
+            PublicResources.ExternalResources exRsrc = new PublicResources.ExternalResources();
 
 
             // Public, protected, internal, private, protected internal
@@ -32,24 +33,43 @@ namespace CSharpDrillExercisesPart2
             Console.WriteLine("\tused in the namespace assembly or within a derived class.");
             Console.WriteLine("\n\nOn the following screens each of these types will be demonstrated.");
 
-
             // Clear console in between examples
             outRsrc.clrScreen();
+
 
 
             // Demonstration of public accessor
-            Console.WriteLine("\nA public method was created in the outside resources class that will");
-            Console.WriteLine("return sample text for printing or other uses.  Here is the example text:\n\n");
+            Console.WriteLine("\nA public method was created in the external resources class in a");
+            Console.WriteLine("separate namespace called public resources taht will return sample");
+            Console.WriteLine("text for printing or other uses.  Here is the example text:\n\n");
 
-            string printExample = outRsrc.publicExample();
+            string printExample = exRsrc.publicExample();
             Console.WriteLine(printExample);
-
 
             // Clear console in between examples
             outRsrc.clrScreen();
 
 
+
             // Demonstration of internal accesor
+            Console.WriteLine("\nExternal resources also has an internal integer variable named");
+            Console.WriteLine("internalExample.  If the code tries to print the value of the");
+            Console.WriteLine("variable without referring to the external namespace, it will");
+            Console.WriteLine("have an error.");
+            //Console.WriteLine(internalExample);
+
+            Console.WriteLine("\nHowever, I can use a copy of the internalExample within this namepsace");
+            Console.WriteLine("or access the external namespace to access its members:");
+            Console.WriteLine("\nIn this namespace the internalExample is equal to {0}",outRsrc.internalExample);
+            Console.WriteLine("\nIn the external namespace internalExample is equal to {0}", exRsrc.internalExample);
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
+
+
+
+            // Demonstration of private accesor
+            Console.WriteLine("\nExternal resources a private integer variable named private example");
 
         }
     }
