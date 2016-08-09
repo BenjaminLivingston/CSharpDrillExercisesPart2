@@ -69,7 +69,19 @@ namespace CSharpDrillExercisesPart2
 
 
             // Demonstration of private accesor
-            Console.WriteLine("\nExternal resources a private integer variable named private example");
+            Console.WriteLine("\nExternal resources a private integer variable named private example.");
+            Console.WriteLine("Private example cannot be accessed from this namespace. Attempting to will");
+            Console.WriteLine("create an error.");
+            //Console.WriteLine("\nIn the external namespace privateExample is equal to {0}", exRsrc.privateExample);
+            Console.WriteLine("\nA method can be created in the other namespace that accesses the");
+            Console.WriteLine("privateExample.  It is called access private example.  Using this");
+            Console.WriteLine("we can access the private example.");
+
+            int integer2 = exRsrc.accessPrivateExample();
+            Console.WriteLine("\nIn the external namespace privateExample is equal to {0}", integer2);
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
 
         }
     }

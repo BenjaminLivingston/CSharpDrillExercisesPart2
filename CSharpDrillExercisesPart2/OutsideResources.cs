@@ -35,6 +35,13 @@ namespace PublicResources
         }
 
         internal int internalExample = 7;
+
         private int privateExample = 12;
+
+        public int accessPrivateExample()
+        {
+            int privateAccessor = privateExample;
+            return privateAccessor;
+        }
     }
 }
