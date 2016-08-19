@@ -9,8 +9,6 @@ namespace CSharpDrillExercisesPart2
     class Exercises
     {
 
-
-
         static void Main(string[] args)
         {
             Exercises ex = new Exercises();
@@ -40,11 +38,30 @@ namespace CSharpDrillExercisesPart2
 
             // Demonstration of public accessor
             Console.WriteLine("\nA public method was created in the external resources class in a");
-            Console.WriteLine("separate namespace called public resources taht will return sample");
+            Console.WriteLine("separate namespace called public resources that will return sample");
             Console.WriteLine("text for printing or other uses.  Here is the example text:\n\n");
 
             string printExample = exRsrc.publicExample();
             Console.WriteLine(printExample);
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
+
+
+
+            // Demonstration of protected accesor
+            Console.WriteLine("\nProtected resources can only be used by the containing type.");
+            Console.WriteLine("This namespace has a class called rectangle that takes variables");
+            Console.WriteLine("for the length and width.  The rectangle has a protected method");
+            Console.WriteLine("called area which will return the area of the rectangle.");
+            Console.WriteLine("Only the rectangle class can access this method, so in this context");
+            Console.WriteLine("The area cannot be returned.");
+
+            rectangle rect = new rectangle(3.0, 7.0);
+            Console.WriteLine("\n\nAn example rectangle has the length of {0} and width of {1}.", rect.length, rect.width);
+            //Console.WriteLine("has the area of " + rect.rectArea());
+            Console.WriteLine("The area cannot be returned of this rectangle without error");
+            Console.WriteLine("due to the area method being protected.");
 
             // Clear console in between examples
             outRsrc.clrScreen();
@@ -69,7 +86,7 @@ namespace CSharpDrillExercisesPart2
 
 
             // Demonstration of private accesor
-            Console.WriteLine("\nExternal resources a private integer variable named private example.");
+            Console.WriteLine("\nExternal resources contains a private integer variable named private example.");
             Console.WriteLine("Private example cannot be accessed from this namespace. Attempting to will");
             Console.WriteLine("create an error.");
             //Console.WriteLine("\nIn the external namespace privateExample is equal to {0}", exRsrc.privateExample);
@@ -83,6 +100,76 @@ namespace CSharpDrillExercisesPart2
             // Clear console in between examples
             outRsrc.clrScreen();
 
+
+            // Protected Internal
+            Console.WriteLine("\nProtected Internal resources are protected or internal meaning that the");
+            Console.WriteLine("it can be accessed from within the container or from within this namespace.");
+            Console.WriteLine("A duplicate of the rectangle area method has been created here that is");
+            Console.WriteLine("protected internal and now we can print the area of the rectangle created");
+            Console.WriteLine("earlier.");
+
+            Console.WriteLine("\nThe area of the rectangle created earlier is " + rect.accessArea());
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
+
+
+
+            // Sealed Class
+            Console.WriteLine("\nA sealed class or method will not allow derivatives.  This means");
+            Console.WriteLine("a child cannot be created.  A sealed triangle class has been created.");
+            Console.WriteLine("It would create an error if a derived equlateral triangle class is");
+            Console.WriteLine("attempted to be created.  It has therefore been commented out.");
+
+            triangle tri = new triangle(4.0, 5.1);
+            Console.WriteLine("\n\nAn example triangle has the base of {0} and height of {1}.", tri.triBase, tri.triHeight);
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
         }
     }
+
+
+
+    // Rectangle Class
+    public class rectangle
+    {
+        public double length { get; set; }
+        public double width { get; set; }
+        
+
+        public rectangle(double lngth, double wdth)
+        {
+            length = lngth;
+            width = wdth;
+        }
+
+        protected double rectArea()
+        {
+            return length * width;
+        }
+
+        protected internal double accessArea()
+        {
+            return length * width;
+        }
+    }
+
+
+    sealed class triangle
+    {
+        public double triBase {get;set;}
+        public double triHeight { get; set; }
+
+        public triangle(double x, double y)
+        {
+            triBase = x;
+            triHeight = y;
+        }
+    }
+
+    // This would produce an error and is commented out to prevent the error:
+    //class equilateralTriangle : triangle{ }
+
+
 }

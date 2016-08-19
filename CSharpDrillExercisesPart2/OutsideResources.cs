@@ -17,7 +17,10 @@ namespace CSharpDrillExercisesPart2
             return;
         }
 
+
         internal int internalExample = 40;
+
+
 
 
     }
@@ -34,9 +37,12 @@ namespace PublicResources
             return rtrnText;
         }
 
+
         internal int internalExample = 7;
 
+
         private int privateExample = 12;
+
 
         public int accessPrivateExample()
         {
