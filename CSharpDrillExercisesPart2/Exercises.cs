@@ -126,6 +126,29 @@ namespace CSharpDrillExercisesPart2
 
             // Clear console in between examples
             outRsrc.clrScreen();
+
+
+
+            // Interface Example
+            Console.WriteLine("\nAn Interface class a type of class that defines the exact what");
+            Console.WriteLine("syntax for all classes inherited from it and the defined classes");
+            Console.WriteLine("define the how syntax.");
+            Console.WriteLine("\nAn Employee Log Interface class has been created.  Following are");
+            Console.WriteLine("examples of using this interface.");
+
+            EmployeeLog e1 = new EmployeeLog("0001", "Cindy", "Jones", "555-55-5555", "4/15/2008", 26.00);
+            EmployeeLog e2 = new EmployeeLog("0002", "Sarah", "Smith", "555-55-5555", "7/01/2008", 24.00);
+            EmployeeLog e3 = new EmployeeLog("0003", "Kamala", "Khan", "555-55-5555", "9/15/2009", 18.00);
+            EmployeeLog e4 = new EmployeeLog("0004", "Anthony", "Sanchez", "555-55-5555", "10/01/2011", 12.50);
+
+            e1.showEmployeeInfo();
+            outRsrc.clrScreen();
+            e2.showEmployeeInfo();
+            e3.showEmployeeInfo();
+            e4.showEmployeeInfo();
+
+            // Clear console in between examples
+            outRsrc.clrScreen();
         }
     }
 
@@ -170,6 +193,61 @@ namespace CSharpDrillExercisesPart2
 
     // This would produce an error and is commented out to prevent the error:
     //class equilateralTriangle : triangle{ }
+
+
+
+    // Interface Class
+    public interface IEmployeeLog
+    {
+        // Members of Employee Log Interface
+        void showEmployeeInfo();
+        double getSalary();
+    }
+
+    public class EmployeeLog : IEmployeeLog
+    {
+        private string empCode;
+        private string firstName;
+        private string lastName;
+        private string eIN;
+        private string hireDate;
+        private double salary;
+
+        public EmployeeLog()
+        {
+            empCode = " ";
+            firstName = " ";
+            lastName = " ";
+            eIN = " ";
+            hireDate = " ";
+            salary = 0.0;
+        }
+
+        public EmployeeLog(string cd, string fn, string ln, string ss, string dt, double s)
+        {
+            empCode = cd;
+            firstName = fn;
+            lastName = ln;
+            eIN = ss;
+            hireDate = dt;
+            salary = s;
+        }
+
+        public double getSalary()
+        {
+            return salary;
+        }
+
+        public void showEmployeeInfo()
+        {
+            Console.WriteLine("\nEmployee ID:   {0}", empCode);
+            Console.WriteLine("First Name:    {0}", firstName);
+            Console.WriteLine("Last Name:     {0}", lastName);
+            Console.WriteLine("SS or EIN:     {0}", eIN);
+            Console.WriteLine("Date of Hire:  {0}", hireDate);
+            Console.WriteLine("Hourly Rate:   {0}", salary);
+        }
+    }
 
 
 }
